@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
     <div class="intro-overlay">
         <h1 class="intro-logo">Agnello</h1>
     </div>
@@ -22,16 +21,16 @@
                 <a href="index.jsp" class="logo">Agnello</a>
             </div>
             <ul class="nav-links">
-            <li><a href="#" class="filter-btn" data-filter="tinto">Tintos</a></li>
-            <li><a href="#" class="filter-btn" data-filter="branco">Brancos</a></li>
-            <li><a href="#" class="filter-btn" data-filter="rose">Rosés</a></li>
-            <li><a href="#" class="filter-btn" data-filter="all">Todos</a></li>
-            <li><a href="sommelier.jsp" class="fw-bold" style="color: var(--sand-button);">Sommelier</a></li>
-            <li class="expandable-search">
-                <button class="search-toggle" id="searchToggleBtn"><i class="bi bi-search"></i></button>
-                <input type="text" class="search-input" id="searchInput" placeholder="Buscar...">
-            </li>
-        </ul>
+                <li><a href="#" class="filter-btn" data-filter="tinto">Tintos</a></li>
+                <li><a href="#" class="filter-btn" data-filter="branco">Brancos</a></li>
+                <li><a href="#" class="filter-btn" data-filter="rose">Rosés</a></li>
+                <li><a href="#" class="filter-btn" data-filter="all">Todos</a></li>
+                <li><a href="sommelier.jsp" class="fw-bold" style="color: var(--sand-button);">Sommelier</a></li>
+                <li class="expandable-search">
+                    <button class="search-toggle" id="searchToggleBtn"><i class="bi bi-search"></i></button>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar...">
+                </li>
+            </ul>
             <div class="user-actions">
                 <a href="perfil.jsp" class="profile-btn"><i class="bi bi-person-circle"></i></a>
                 <button class="cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
@@ -56,29 +55,28 @@
         <h2 class="section-title brand-font">Melhor Seleção</h2>
         <p class="section-subtitle">EXPLORE NOSSA ADEGA</p>
         <div class="product-grid">
-
             <div class="product-card">
                 <span class="tag branco">BRANCO</span>
-                <a href="produto.jsp?id=sip-happens">
+                <a href="detalhe-vinho?id=sip-happens">
                     <div class="product-image-container">
-                        <img src="img/Gemini_Generated_Image_qdhdkwqdhdkwqdhd (1).png" class="product-image" alt="Sip Happens 2020">
+                        <img src="img/Gemini_Generated_Image_qdhdkwqdhdkwqdhd (1).png" class="product-image" alt="Dona Isabella Chadonnay">
                     </div>
                 </a>
-                <a href="produto.jsp?id=sip-happens" class="text-decoration-none text-dark">
+                <a href="detalhe-vinho?id=sip-happens" class="text-decoration-none text-dark">
                     <h3 class="product-title brand-font">Dona Isabella Chadonnay</h3>
                 </a>
                 <p class="product-price">R$ 142,00</p>
-                <button class="btn-buy-now" onclick="adicionarAoCarrinho('Sip Happens 2020', 142)">Comprar agora</button>
+                <button class="btn-buy-now" onclick="adicionarAoCarrinho('Dona Isabella Chadonnay', 142)">Comprar agora</button>
             </div>
 
             <div class="product-card">
                 <span class="tag tinto">TINTO</span>
-                <a href="produto.jsp?id=valle-andino">
+                <a href="detalhe-vinho?id=valle-andino">
                     <div class="product-image-container">
-                        <img src="img/Gemini_Generated_Image_qxx5exqxx5exqxx5 (1).png" class="product-image" alt="Valle Andino">
+                        <img src="img/Gemini_Generated_Image_qxx5exqxx5exqxx5 (1).png" class="product-image" alt="Valle Andino Reserva">
                     </div>
                 </a>
-                <a href="produto.jsp?id=valle-andino" class="text-decoration-none text-dark">
+                <a href="detalhe-vinho?id=valle-andino" class="text-decoration-none text-dark">
                     <h3 class="product-title brand-font">Valle Andino Reserva</h3>
                 </a>
                 <p class="product-price">R$ 185,00</p>
@@ -87,18 +85,17 @@
 
             <div class="product-card">
                 <span class="tag rose">ROSÉ</span>
-                <a href="produto.jsp?id=sapphire-sunset">
+                <a href="detalhe-vinho?id=sapphire-sunset">
                     <div class="product-image-container">
-                        <img src="img/Gemini_Generated_Image_42b1mg42b1mg42b1 (1).png" class="product-image" alt="Sapphire Sunset">
+                        <img src="img/Gemini_Generated_Image_42b1mg42b1mg42b1 (1).png" class="product-image" alt="Encanto Provençal">
                     </div>
                 </a>
-                <a href="produto.jsp?id=sapphire-sunset" class="text-decoration-none text-dark">
+                <a href="detalhe-vinho?id=sapphire-sunset" class="text-decoration-none text-dark">
                     <h3 class="product-title brand-font">Encanto Provençal</h3>
                 </a>
                 <p class="product-price">R$ 160,00</p>
-                <button class="btn-buy-now" onclick="adicionarAoCarrinho('Sapphire Sunset', 160)">Comprar agora</button>
+                <button class="btn-buy-now" onclick="adicionarAoCarrinho('Encanto Provençal', 160)">Comprar agora</button>
             </div>
-
         </div>
     </section>
 
@@ -123,17 +120,11 @@
     <script src="js/script.js"></script>
 
     <footer class="footer-agnello py-5 mt-5">
-    <div class="container text-center">
-        <div class="footer-logo brand-font fs-2 mb-3">Agnello</div>
-        <p class="mb-1">Agnello © 2026 - Vinhos com Propósito</p>
-        <p class="small text-muted">Desenvolvido por <span class="fw-bold text-gold">Codart</span></p>
-
-        <div class="social-links mt-4">
-            <a href="#" class="mx-2 text-dark"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="mx-2 text-dark"><i class="bi bi-facebook"></i></a>
+        <div class="container text-center">
+            <div class="footer-logo brand-font fs-2 mb-3">Agnello</div>
+            <p class="mb-1">Agnello © 2026 - Vinhos com Propósito</p>
+            <p class="small text-muted">Desenvolvido por <span class="fw-bold text-gold">Codart</span></p>
         </div>
-    </div>
     </footer>
-
 </body>
 </html>

@@ -45,7 +45,6 @@
                 </nav>
 
                 <span class="tag tag-${produto.classeTag} mb-3 d-inline-block">${produto.tag}</span>
-
                 <h1 class="display-3 brand-font my-2">${produto.nome}</h1>
                 <p class="fs-2 fw-light text-dark mb-4">R$ ${produto.preco}</p>
 
@@ -79,41 +78,13 @@
                 </div>
 
                 <div class="d-grid gap-3">
-                    <button class="btn btn-dark btn-lg rounded-pill py-3 fw-bold shadow-lg">
+                    <button class="btn btn-dark btn-lg rounded-pill py-3 fw-bold shadow-lg" onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco})">
                         <i class="bi bi-bag-plus me-2"></i> ADICIONAR AO CARRINHO
                     </button>
-                    <div class="p-3 border rounded-4 d-flex align-items-center gap-3 bg-white">
-                        <i class="bi bi-truck text-success fs-4"></i>
-                        <span class="small">Frete grátis em pedidos acima de R$ 500 para todo o Brasil.</span>
-                    </div>
                 </div>
             </div>
         </div>
     </main>
-
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
-        <div class="offcanvas-header text-white" style="background-color: #2b0b10;">
-            <h5 class="offcanvas-title brand-font">Meu Carrinho</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column">
-            <div class="offcanvas-body-items flex-grow-1" id="cartItems">
-                <p class="text-muted text-center py-4">Seu carrinho está vazio.</p>
-            </div>
-            <div class="border-top pt-3">
-                <h5 id="cartTotal" class="brand-font">Total: R$ 0,00</h5>
-                <button class="btn btn-dark w-100 rounded-pill py-3 mt-3 fw-bold">FINALIZAR COMPRA</button>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer-agnello py-5 mt-5">
-        <div class="container text-center">
-            <div class="footer-logo brand-font fs-2 mb-3">Agnello</div>
-            <p class="mb-1">Agnello © 2026 - Vinhos com Propósito</p>
-            <p class="small text-muted">Desenvolvido por <span class="fw-bold" style="color: #d4af37;">Codart</span></p>
-        </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

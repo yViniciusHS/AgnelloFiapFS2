@@ -16,24 +16,24 @@ public class UsuarioServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1. Recupera a sessão atual
+        // Recupera a sessão
         HttpSession session = request.getSession();
 
-        // 2. Obtém o usuário logado na sessão (definido no LoginServlet)
+        //  Obtém o usuário logado na sessão
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 
         if (usuarioLogado != null) {
-            // 3. Busca dados em tempo real no banco para garantir que XP e Nível estejam atualizados
+            // Busca dados em tempo real no banco para garantir que XP e Nível
             UsuarioDAO dao = new UsuarioDAO();
             Usuario usuarioAtualizado = dao.buscarPorEmail(usuarioLogado.getEmail());
 
-            // 4. Define o atributo para o JSP.
+            // atributo para o JSP.
             request.setAttribute("usuario", usuarioAtualizado);
 
-            // 5. Encaminha para o JSP (Forward mantém o objeto no Request)
+            // Encamina para o JSP
             request.getRequestDispatcher("perfil.jsp").forward(request, response);
         } else {
-            // 6. Segurança: Se não houver sessão, manda para o login
+            // Se não houver sessão, manda para o login
             response.sendRedirect("login.jsp");
         }
     }

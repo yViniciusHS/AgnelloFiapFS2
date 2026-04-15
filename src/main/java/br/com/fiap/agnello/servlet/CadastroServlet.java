@@ -22,7 +22,7 @@ public class CadastroServlet extends HttpServlet {
         String endereco = request.getParameter("endereco");
         String cep = request.getParameter("cep");
 
-        // Validação simples: impede o prosseguimento se campos essenciais estiverem vazios
+        //  impede o prosseguimento se campos essenciais estiverem vazios
         if (nome == null || email == null || senha == null || nome.isEmpty() || email.isEmpty()) {
             request.setAttribute("erro", "Por favor, preencha todos os campos obrigatórios.");
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);
@@ -44,7 +44,7 @@ public class CadastroServlet extends HttpServlet {
 
         UsuarioDAO dao = new UsuarioDAO();
 
-        // Tenta persistir no banco de dados da Azure
+        // Tenta persistir na Azure
         if (dao.cadastrar(u)) {
 
             response.sendRedirect("login.jsp?sucesso=true");

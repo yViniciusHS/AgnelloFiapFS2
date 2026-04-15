@@ -37,7 +37,7 @@
         <p class="section-subtitle">EXPLORE NOSSA ADEGA</p>
 
         <div class="product-grid">
-            <%-- Laço dinâmico: Percorre a lista 'vinhos' enviada pelo HomeServlet --%>
+            <%-- Laço dinâmico Percorre a lista 'vinhos' enviada pelo HomeServlet --%>
             <c:forEach var="v" items="${vinhos}">
                 <div class="product-card">
                     <%-- Tag dinâmica (Tinto, Branco, Rose) vinda da Azure --%>

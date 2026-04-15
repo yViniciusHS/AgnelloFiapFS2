@@ -12,7 +12,7 @@ public class Vinho {
     private String descricao;
     private String producao;
 
-    // Novos atributos para o Gráfico do Sommelier
+    // atributos para o Gráfico do Sommelier
     private int corpo;
     private int taninos;
     private int alcool;

@@ -55,7 +55,7 @@ public class UsuarioDAO {
         }
     }
 
-    // Método auxiliar para evitar repetição de código
+    // Método auxiliar
     private Usuario preencherUsuario(ResultSet rs) throws SQLException {
         Usuario u = new Usuario();
         u.setEmail(rs.getString("email"));

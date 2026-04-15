@@ -47,7 +47,7 @@
             <div class="col-md-8">
 
                 <c:set var="filtrosRapidos" value="leve,intenso,fresco,churrasco,romantico,piscina" />
-                <%-- Normaliza o parâmetro busca para evitar erros de comparação --%>
+
                 <c:set var="buscaAtual" value="${not empty param.busca ? param.busca.toLowerCase() : ''}" />
 
                 <form action="sommelier" method="GET">
@@ -61,7 +61,7 @@
                     </div>
                 </form>
 
-                <%-- Botões com destaque dinâmico  --%>
+
                 <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
                     <a href="sommelier?busca=leve" class="btn btn-filter rounded-pill px-4 ${buscaAtual == 'leve' ? 'btn-dark' : 'btn-outline-dark'}">Vinhos Leves</a>
                     <a href="sommelier?busca=intenso" class="btn btn-filter rounded-pill px-4 ${buscaAtual == 'intenso' ? 'btn-dark' : 'btn-outline-dark'}">Vinhos Intensos</a>

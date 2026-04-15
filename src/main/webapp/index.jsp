@@ -37,10 +37,10 @@
         <p class="section-subtitle">EXPLORE NOSSA ADEGA</p>
 
         <div class="product-grid">
-            <%-- Laço dinâmico Percorre a lista 'vinhos' enviada pelo HomeServlet --%>
+
             <c:forEach var="v" items="${vinhos}">
                 <div class="product-card">
-                    <%-- Tag dinâmica (Tinto, Branco, Rose) vinda da Azure --%>
+
                     <span class="tag ${v.classeTag}">${v.tag}</span>
 
                     <a href="detalhe-vinho?id=${v.id}">
@@ -62,7 +62,7 @@
                 </div>
             </c:forEach>
 
-            <%-- Mensagem caso lista esteja vazia --%>
+            <%-- Mensagem se lista vazia --%>
             <c:if test="${empty vinhos}">
                 <div class="col-12 text-center py-5">
                     <p class="text-muted">Nenhum vinho encontrado na nossa adega no momento.</p>
@@ -88,7 +88,7 @@
         </div>
     </div>
 
-    <%-- Scripts e Rodapé --%>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="js/script.js"></script>

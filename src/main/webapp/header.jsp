@@ -20,7 +20,7 @@
         </ul>
 
         <div class="user-actions d-flex align-items-center gap-3">
-            <%-- Validação de Sessão limpa usando JSTL e Expression Language --%>
+
             <c:choose>
                 <c:when test="${not empty sessionScope.usuarioLogado}">
                     <a href="perfil" class="profile-btn"><i class="bi bi-person-circle"></i></a>

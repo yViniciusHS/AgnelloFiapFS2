@@ -32,7 +32,7 @@
                     <a href="#" class="list-group-item list-group-item-action profile-tab-link p-3 border-0" data-target="dados">
                         <i class="bi bi-person me-2"></i>Dados Pessoais
                     </a>
-                    <%-- Logout: Encerra a sessão no servidor --%>
+                    <%-- Logout --%>
                     <a href="logout" class="list-group-item list-group-item-action p-3 text-danger border-top">
                         <i class="bi bi-box-arrow-right me-2"></i>Sair
                     </a>

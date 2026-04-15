@@ -35,10 +35,10 @@ public class VinhoDAO {
         List<Vinho> vinhos = new ArrayList<>();
         StringBuilder sql = new StringBuilder("SELECT * FROM t_agnello_vinho WHERE ");
 
-        // Lógica Avançada: Tradução de conceitos sensoriais e ocasiões para dados técnicos
+
         switch (perfil.toLowerCase()) {
             case "leve":
-                // Vinhos leves: pouco corpo e boa acidez (refrescância)
+                // Vinhos leves: pouco corpo e boa acidez
                 sql.append("corpo <= 4 AND acidez >= 6");
                 break;
             case "intenso":
@@ -58,7 +58,7 @@ public class VinhoDAO {
                 sql.append("classe_tag IN ('branco', 'rose') AND acidez >= 6");
                 break;
             case "churrasco":
-                // Ocasião: Tintos encorpados que suportam carnes vermelhas
+                // Ocasião: Tintos encorpados
                 sql.append("classe_tag = 'tinto' AND corpo >= 7");
                 break;
             default:
@@ -153,7 +153,7 @@ public class VinhoDAO {
         return vinho;
     }
 
-    //Mapeamento centralizado do ResultSet para o Objeto Vinho.
+    //Mapeamento do ResultSet para o Objeto Vinho.
 
     private Vinho preencherVinho(ResultSet rs) throws SQLException {
         Vinho v = new Vinho();

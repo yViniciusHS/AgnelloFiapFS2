@@ -9,7 +9,6 @@ import java.io.IOException;
 
 
  // Servlet responsável por carregar os dados dinâmicos do perfil do usuário.
- //Atua como o Controller que conecta o Banco de Dados (Azure) à View (perfil.jsp).
 
 @WebServlet("/perfil")
 public class UsuarioServlet extends HttpServlet {
@@ -23,14 +22,14 @@ public class UsuarioServlet extends HttpServlet {
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 
         if (usuarioLogado != null) {
-            // Busca dados em tempo real no banco para garantir que XP e Nível
+            // Busca dados em tempo real no banco
             UsuarioDAO dao = new UsuarioDAO();
             Usuario usuarioAtualizado = dao.buscarPorEmail(usuarioLogado.getEmail());
 
-            // atributo para o JSP.
+
             request.setAttribute("usuario", usuarioAtualizado);
 
-            // Encamina para o JSP
+
             request.getRequestDispatcher("perfil.jsp").forward(request, response);
         } else {
             // Se não houver sessão, manda para o login
@@ -40,7 +39,7 @@ public class UsuarioServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Redireciona chamadas POST para o GET para evitar erros
+        // Redireciona chamadas POST para o GET
         doGet(request, response);
     }
 }

@@ -12,20 +12,7 @@
 </head>
 <body class="bg-light">
 
-    <header class="custom-header py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="index.jsp" class="logo fs-2 text-decoration-none">Agnello</a>
-            <div class="user-actions d-flex gap-3 align-items-center">
-                <a href="perfil.jsp" class="profile-btn text-white fs-4"><i class="bi bi-person-circle"></i></a>
-                <button class="cart-btn border-0 bg-transparent text-white" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
-                    <i class="bi bi-cart2"></i> <span id="cart-total-header">R$ 0,00</span>
-                </button>
-                <a href="index.jsp" class="text-white text-decoration-none ms-2 small text-uppercase letter-spacing-2">
-                    <i class="bi bi-arrow-left"></i> Voltar
-                </a>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="header.jsp" />
 
     <main class="container my-5 py-5">
         <div class="row g-5">
@@ -45,29 +32,29 @@
                 </nav>
 
                 <span class="tag tag-${produto.classeTag} mb-3 d-inline-block">${produto.tag}</span>
-                <h1 class="display-3 brand-font my-2">${produto.nome}</h1>
-                <p class="fs-2 fw-light text-dark mb-4">R$ ${produto.preco}</p>
+                <h1 id="product-name" class="display-3 brand-font my-2">${produto.nome}</h1>
+                <p id="product-price" class="fs-2 fw-light text-dark mb-4">R$ ${produto.preco}</p>
 
-                <p class="text-muted fs-5 mb-5 fw-light" style="line-height: 1.8;">${produto.descricao}</p>
+                <p id="product-desc" class="text-muted fs-5 mb-5 fw-light" style="line-height: 1.8;">${produto.descricao}</p>
 
                 <div class="row g-3 mb-5">
                     <div class="col-6">
                         <div class="p-3 border rounded-4 bg-white shadow-sm h-100">
                             <small class="text-muted d-block text-uppercase mb-1" style="font-size: 0.7rem; letter-spacing: 1px;">País</small>
-                            <span class="fw-bold">${produto.pais}</span>
+                            <span id="product-country" class="fw-bold">${produto.pais}</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="p-3 border rounded-4 bg-white shadow-sm h-100">
                             <small class="text-muted d-block text-uppercase mb-1" style="font-size: 0.7rem; letter-spacing: 1px;">Região</small>
-                            <span class="fw-bold">${produto.regiao}</span>
+                            <span id="product-region" class="fw-bold">${produto.regiao}</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="p-4 border rounded-5 bg-white shadow-sm mb-5">
                     <h6 class="fw-bold mb-3 text-uppercase small letter-spacing-2">Segredos da Vinícola</h6>
-                    <p class="text-muted mb-0 small" style="line-height: 1.6;">${produto.producao}</p>
+                    <p id="product-prod" class="text-muted mb-0 small" style="line-height: 1.6;">${produto.producao}</p>
                 </div>
 
                 <div class="mb-5 p-4 bg-white rounded-5 border shadow-sm">
@@ -117,10 +104,6 @@
             <div class="footer-logo brand-font fs-2 mb-3">Agnello</div>
             <p class="mb-1">Agnello © 2026 - Vinhos com Propósito</p>
             <p class="small text-muted">Desenvolvido por <span class="fw-bold text-gold">Codart</span></p>
-            <div class="social-links mt-4">
-                <a href="#" class="mx-2 text-dark"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="mx-2 text-dark"><i class="bi bi-facebook"></i></a>
-            </div>
         </div>
     </footer>
 

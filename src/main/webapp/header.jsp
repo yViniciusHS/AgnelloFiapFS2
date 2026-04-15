@@ -6,10 +6,10 @@
         </div>
 
         <ul class="nav-links mb-0 d-none d-lg-flex">
-            <li><a href="#" class="filter-btn" data-filter="tinto">Tintos</a></li>
-            <li><a href="#" class="filter-btn" data-filter="branco">Brancos</a></li>
-            <li><a href="#" class="filter-btn" data-filter="rose">Rosés</a></li>
-            <li><a href="#" class="filter-btn" data-filter="all">Todos</a></li>
+            <li><a href="index.jsp" class="filter-btn" data-filter="tinto">Tintos</a></li>
+            <li><a href="index.jsp" class="filter-btn" data-filter="branco">Brancos</a></li>
+            <li><a href="index.jsp" class="filter-btn" data-filter="rose">Rosés</a></li>
+            <li><a href="index.jsp" class="filter-btn" data-filter="all">Todos</a></li>
             <li><a href="sommelier.jsp" class="fw-bold" style="color: var(--sand-button);">Sommelier</a></li>
             <li class="expandable-search">
                 <button class="search-toggle" id="searchToggleBtn"><i class="bi bi-search"></i></button>
@@ -22,7 +22,8 @@
                 <a href="perfil" class="profile-btn"><i class="bi bi-person-circle"></i></a>
             <% } else { %>
                 <a href="login.jsp" class="text-white text-decoration-none small text-uppercase letter-spacing-2 fw-bold">Entrar</a>
-                <a href="cadastro.jsp" class="btn btn-outline-light btn-sm rounded-pill px-3" style="font-size: 0.7rem; border-color: var(--sand-button); color: var(--sand-button);">CADASTRE-SE</a>
+                <a href="cadastro.jsp" class="btn btn-outline-light btn-sm rounded-pill px-3"
+                   style="font-size: 0.7rem; border-color: var(--sand-button); color: var(--sand-button);">CADASTRE-SE</a>
             <% } %>
 
             <button class="cart-btn border-0" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">

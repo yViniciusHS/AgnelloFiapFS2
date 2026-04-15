@@ -15,30 +15,7 @@
         <h1 class="intro-logo">Agnello</h1>
     </div>
 
-    <header class="custom-header">
-        <div class="container-fluid px-4 px-lg-5 header-grid">
-            <div class="header-left">
-                <a href="index.jsp" class="logo">Agnello</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#" class="filter-btn" data-filter="tinto">Tintos</a></li>
-                <li><a href="#" class="filter-btn" data-filter="branco">Brancos</a></li>
-                <li><a href="#" class="filter-btn" data-filter="rose">Rosés</a></li>
-                <li><a href="#" class="filter-btn" data-filter="all">Todos</a></li>
-                <li><a href="sommelier.jsp" class="fw-bold" style="color: var(--sand-button);">Sommelier</a></li>
-                <li class="expandable-search">
-                    <button class="search-toggle" id="searchToggleBtn"><i class="bi bi-search"></i></button>
-                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar...">
-                </li>
-            </ul>
-            <div class="user-actions">
-                <a href="perfil.jsp" class="profile-btn"><i class="bi bi-person-circle"></i></a>
-                <button class="cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
-                    <i class="bi bi-cart2"></i> R$ 0,00 (0)
-                </button>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="header.jsp" />
 
     <section class="hero-section">
         <div class="hero-content">

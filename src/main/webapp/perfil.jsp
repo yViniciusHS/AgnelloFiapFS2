@@ -12,18 +12,15 @@
 </head>
 <body class="bg-light">
 
-    <header class="custom-header py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="index.jsp" class="logo fs-2 text-decoration-none">Agnello</a>
-            <div class="text-white">Olá, <span class="fw-bold">${usuario.nome}</span></div>
-        </div>
-    </header>
+    <%-- Inclusão do Header Global: Mantém a identidade e a lógica de login --%>
+    <jsp:include page="header.jsp" />
 
-    <div class="container my-5">
+    <div class="container my-5 pt-4">
         <div class="row g-4">
+            <%-- Menu Lateral de Navegação --%>
             <div class="col-md-3">
                 <div class="list-group list-group-flush rounded-4 shadow-sm overflow-hidden border-0">
-                    <a href="#" class="list-group-item list-group-item-action active profile-tab-link p-3 border-0" data-target="pedidos">
+                    <a href="#" class="list-group-item list-group-item-action active bg-dark text-white profile-tab-link p-3 border-0" data-target="pedidos">
                         <i class="bi bi-box-seam me-2"></i>Meus Pedidos
                     </a>
                     <a href="#" class="list-group-item list-group-item-action profile-tab-link p-3 border-0" data-target="clube">
@@ -35,15 +32,18 @@
                     <a href="#" class="list-group-item list-group-item-action profile-tab-link p-3 border-0" data-target="dados">
                         <i class="bi bi-person me-2"></i>Dados Pessoais
                     </a>
+                    <%-- Logout: Encerra a sessão no servidor --%>
                     <a href="logout" class="list-group-item list-group-item-action p-3 text-danger border-top">
                         <i class="bi bi-box-arrow-right me-2"></i>Sair
                     </a>
                 </div>
             </div>
 
+            <%-- Conteúdo das Abas --%>
             <div class="col-md-9">
 
-                <div id="pedidos" class="profile-tab-content">
+                <%-- Aba: Pedidos --%>
+                <div id="pedidos" class="profile-tab-content animate__animated animate__fadeIn">
                     <h2 class="brand-font mb-4">Meus Pedidos</h2>
                     <div class="card border-0 shadow-sm rounded-4 mb-3">
                         <div class="card-body p-4 d-flex justify-content-between align-items-center bg-white">
@@ -60,7 +60,8 @@
                     </div>
                 </div>
 
-                <div id="clube" class="profile-tab-content d-none">
+                <%-- Aba: Clube Agnello (Gamificação) --%>
+                <div id="clube" class="profile-tab-content d-none animate__animated animate__fadeIn">
                     <h2 class="brand-font mb-4">Clube Agnello</h2>
 
                     <div class="card card-clube border-0 shadow-sm rounded-4 p-4 mb-4">
@@ -76,8 +77,11 @@
                             </div>
                         </div>
 
+                        <%-- Barra de Progresso Dinâmica baseada no XP da Azure --%>
                         <div class="progress bg-dark mb-2" style="height: 10px;">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: ${(usuario.pontosXp * 100) / 1000}%" aria-valuenow="${usuario.pontosXp}" aria-valuemin="0" aria-valuemax="1000"></div>
+                            <div class="progress-bar bg-gold" role="progressbar"
+                                 style="width: ${(usuario.pontosXp * 100) / 1000}%"
+                                 aria-valuenow="${usuario.pontosXp}" aria-valuemin="0" aria-valuemax="1000"></div>
                         </div>
                         <div class="d-flex justify-content-between small opacity-75 text-white">
                             <span class="text-capitalize">${usuario.nivel.toLowerCase()}</span>
@@ -85,6 +89,7 @@
                         </div>
                     </div>
 
+                    <%-- Missões e Benefícios (Fase 2) --%>
                     <div class="row g-4">
                         <div class="col-md-6">
                             <h5 class="brand-font mb-3">Missões para pontuar</h5>
@@ -93,35 +98,24 @@
                                     <div class="fs-3 text-gold me-3"><i class="bi bi-chat-left-text"></i></div>
                                     <div class="flex-grow-1">
                                         <h6 class="mb-0 small fw-bold">Avaliar um Vinho</h6>
-                                        <p class="small text-muted mb-0">+50 XP por comentário</p>
+                                        <p class="small text-muted mb-0">+50 XP</p>
                                     </div>
                                     <button class="btn btn-sm btn-dark rounded-pill">Fazer</button>
                                 </div>
                             </div>
-                            <div class="card border-0 shadow-sm rounded-4 p-3">
-                                <div class="d-flex align-items-center">
-                                    <div class="fs-3 text-gold me-3"><i class="bi bi-camera"></i></div>
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-0 small fw-bold">Postar Foto na Adega</h6>
-                                        <p class="small text-muted mb-0">+100 XP por post</p>
-                                    </div>
-                                    <button class="btn btn-sm btn-dark rounded-pill">Postar</button>
-                                </div>
-                            </div>
                         </div>
-
                         <div class="col-md-6">
                             <h5 class="brand-font mb-3">Meus Benefícios</h5>
                             <ul class="list-unstyled">
                                 <li class="mb-2 small"><i class="bi bi-check2-circle text-gold me-2"></i> 10% OFF em todas as compras</li>
-                                <li class="mb-2 small"><i class="bi bi-check2-circle text-gold me-2"></i> Frete grátis em pedidos acima de R$ 200</li>
-                                <li class="mb-2 small opacity-50"><i class="bi bi-lock-fill me-2"></i> Acesso a rótulos exclusivos (Nível Especialista)</li>
+                                <li class="mb-2 small opacity-50"><i class="bi bi-lock-fill me-2"></i> Rótulos exclusivos (Nível Especialista)</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div id="enderecos" class="profile-tab-content d-none">
+                <%-- Aba: Endereços --%>
+                <div id="enderecos" class="profile-tab-content d-none animate__animated animate__fadeIn">
                     <h2 class="brand-font mb-4">Meus Endereços</h2>
                     <div class="card border-0 shadow-sm rounded-4 p-4 bg-white border-start border-4" style="border-color: var(--sand-button) !important;">
                         <p class="mb-1 fw-bold">Casa (Principal)</p>
@@ -130,7 +124,8 @@
                     </div>
                 </div>
 
-                <div id="dados" class="profile-tab-content d-none">
+                <%-- Aba: Dados Pessoais --%>
+                <div id="dados" class="profile-tab-content d-none animate__animated animate__fadeIn">
                     <h2 class="brand-font mb-4">Dados Pessoais</h2>
                     <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
                         <form class="row g-3">
@@ -158,10 +153,6 @@
             <div class="footer-logo brand-font fs-2 mb-3">Agnello</div>
             <p class="mb-1">Agnello © 2026 - Vinhos com Propósito</p>
             <p class="small text-muted">Desenvolvido por <span class="fw-bold text-gold">Codart</span></p>
-            <div class="social-links mt-4">
-                <a href="#" class="mx-2 text-dark"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="mx-2 text-dark"><i class="bi bi-facebook"></i></a>
-            </div>
         </div>
     </footer>
 

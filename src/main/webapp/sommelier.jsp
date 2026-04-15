@@ -34,15 +34,7 @@
 </head>
 <body class="bg-light">
 
-    <header class="custom-header shadow-sm">
-        <div class="container d-flex justify-content-between align-items-center py-3">
-            <a href="index.jsp" class="logo fs-2">Agnello</a>
-            <nav>
-                <a href="index.jsp" class="text-white text-decoration-none me-4">Loja</a>
-                <a href="perfil.jsp" class="text-white fs-4"><i class="bi bi-person-circle"></i></a>
-            </nav>
-        </div>
-    </header>
+   <jsp:include page="header.jsp" />
 
     <section class="sommelier-hero">
         <div class="container">

@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // 5. Sistema de Abas (Página de Perfil) - Adicionado de volta!
+    // 5. Sistema de Abas (Página de Perfil)
     const profileTabs = document.querySelectorAll('.profile-tab-link');
     profileTabs.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -160,13 +160,17 @@ function atualizarInterfaceCarrinho() {
             `).join('');
         }
     }
+}
 
-    function preencherAdmin() {
-        const emailField = document.getElementById('email');
-        const senhaField = document.getElementById('senha');
-        if(emailField && senhaField) {
-            emailField.value = 'luiz@exemplo.com.br';
-            senhaField.value = '123';
-        }
+/**
+ * Função para facilitar o preenchimento de login durante demonstrações acadêmicas.
+ * Deve ser chamada por um botão ou evento no login.jsp.
+ */
+function preencherAdmin() {
+    const emailField = document.getElementById('email');
+    const senhaField = document.getElementById('senha');
+    if(emailField && senhaField) {
+        emailField.value = 'luiz@exemplo.com.br';
+        senhaField.value = '123';
     }
 }

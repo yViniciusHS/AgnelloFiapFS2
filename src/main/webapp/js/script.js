@@ -94,6 +94,29 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     });
+
+    // 5. Sistema de Abas (Página de Perfil) - Adicionado de volta!
+    const profileTabs = document.querySelectorAll('.profile-tab-link');
+    profileTabs.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('data-target');
+
+            // Remove estado ativo de todos os links e esconde os conteúdos
+            profileTabs.forEach(l => l.classList.remove('active', 'bg-dark', 'text-white'));
+            document.querySelectorAll('.profile-tab-content').forEach(c => c.classList.add('d-none'));
+
+            // Ativa o link clicado e aplica as cores escuras da Agnello
+            link.classList.add('active', 'bg-dark', 'text-white');
+
+            // Mostra o conteúdo correspondente
+            const targetContent = document.getElementById(targetId);
+            if(targetContent) {
+                targetContent.classList.remove('d-none');
+                targetContent.classList.add('animate__animated', 'animate__fadeIn');
+            }
+        });
+    });
 });
 
 // --- SISTEMA DE CARRINHO (Global) ---
@@ -135,6 +158,15 @@ function atualizarInterfaceCarrinho() {
                     <span class="fw-bold small">R$ ${item.preco.toFixed(2)}</span>
                 </div>
             `).join('');
+        }
+    }
+
+    function preencherAdmin() {
+        const emailField = document.getElementById('email');
+        const senhaField = document.getElementById('senha');
+        if(emailField && senhaField) {
+            emailField.value = 'luiz@exemplo.com.br';
+            senhaField.value = '123';
         }
     }
 }

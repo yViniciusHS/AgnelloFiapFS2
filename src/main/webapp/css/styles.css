@@ -417,3 +417,66 @@ body {
 .social-links a:hover {
     color: var(--hero-bg) !important;
 }
+
+/*
+   ESTILOS ESPECÍFICOS - PERFIL E SOMMELIER
+*/
+
+/* Utilitários Globais */
+.text-gold { color: #d4af37 !important; }
+.bg-gold { background-color: #d4af37 !important; }
+
+/* Página de Perfil */
+.profile-tab-content.d-none {
+    display: none !important;
+}
+
+.card-clube {
+    background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+    color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-clube::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+}
+
+.xp-badge {
+    background: rgba(212, 175, 55, 0.2);
+    color: #d4af37;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+/* Página do Sommelier */
+.sommelier-hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../img/b961f52d-f246-43c2-a1b8-5e05d8ff493a.png');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.pilar-card {
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.pilar-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--hero-bg);
+}

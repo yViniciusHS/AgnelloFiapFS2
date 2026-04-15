@@ -9,44 +9,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .profile-tab-content.d-none { display: none !important; }
-        .text-gold { color: #d4af37 !important; }
-        .bg-gold { background-color: #d4af37 !important; }
-
-        /* Estilos específicos para a Gamificação */
-        .card-clube {
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-            color: white;
-            overflow: hidden;
-            position: relative;
-        }
-        .card-clube::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 50%;
-        }
-        .xp-badge {
-            background: rgba(212, 175, 55, 0.2);
-            color: #d4af37;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-    </style>
 </head>
 <body class="bg-light">
 
     <header class="custom-header py-3">
         <div class="container d-flex justify-content-between align-items-center">
-            <a href="index.jsp" class="logo fs-2">Agnello</a>
-            <div class="text-white">Olá, <span class="fw-bold">Luiz Claudio</span></div>
+            <a href="index.jsp" class="logo fs-2 text-decoration-none">Agnello</a>
+            <div class="text-white">Olá, <span class="fw-bold">${usuario.nome}</span></div>
         </div>
     </header>
 
@@ -66,7 +35,7 @@
                     <a href="#" class="list-group-item list-group-item-action profile-tab-link p-3 border-0" data-target="dados">
                         <i class="bi bi-person me-2"></i>Dados Pessoais
                     </a>
-                    <a href="index.jsp" class="list-group-item list-group-item-action p-3 text-danger border-top">
+                    <a href="logout" class="list-group-item list-group-item-action p-3 text-danger border-top">
                         <i class="bi bi-box-arrow-right me-2"></i>Sair
                     </a>
                 </div>
@@ -97,22 +66,22 @@
                     <div class="card card-clube border-0 shadow-sm rounded-4 p-4 mb-4">
                         <div class="d-flex justify-content-between align-items-start mb-4">
                             <div>
-                                <span class="xp-badge mb-2">NÍVEL: ENTUSIASTA</span>
-                                <h3 class="brand-font text-white mb-0">Luiz Claudio</h3>
-                                <p class="small opacity-75 mb-0">Membro desde Jan 2024</p>
+                                <span class="xp-badge mb-2">NÍVEL: ${usuario.nivel}</span>
+                                <h3 class="brand-font text-white mb-0">${usuario.nome}</h3>
+                                <p class="small opacity-75 mb-0">Membro desde ${usuario.membroDesde}</p>
                             </div>
                             <div class="text-end">
-                                <h2 class="text-gold mb-0">850</h2>
+                                <h2 class="text-gold mb-0">${usuario.pontosXp}</h2>
                                 <p class="small opacity-75">Pontos XP</p>
                             </div>
                         </div>
 
                         <div class="progress bg-dark mb-2" style="height: 10px;">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-gold" role="progressbar" style="width: ${(usuario.pontosXp * 100) / 1000}%" aria-valuenow="${usuario.pontosXp}" aria-valuemin="0" aria-valuemax="1000"></div>
                         </div>
                         <div class="d-flex justify-content-between small opacity-75 text-white">
-                            <span>Entusiasta</span>
-                            <span>Próximo nível: <b>Especialista</b> (Faltam 150 XP)</span>
+                            <span class="text-capitalize">${usuario.nivel.toLowerCase()}</span>
+                            <span>Próximo nível: <b>Especialista</b> (Faltam ${1000 - usuario.pontosXp} XP)</span>
                         </div>
                     </div>
 
@@ -156,8 +125,8 @@
                     <h2 class="brand-font mb-4">Meus Endereços</h2>
                     <div class="card border-0 shadow-sm rounded-4 p-4 bg-white border-start border-4" style="border-color: var(--sand-button) !important;">
                         <p class="mb-1 fw-bold">Casa (Principal)</p>
-                        <p class="text-muted mb-0 small">Rua das Videiras, 123 - Vila Toscana</p>
-                        <p class="text-muted small">São Paulo - SP | CEP: 01234-567</p>
+                        <p class="text-muted mb-0 small">${usuario.endereco}</p>
+                        <p class="text-muted small">CEP: ${usuario.cep}</p>
                     </div>
                 </div>
 
@@ -167,11 +136,11 @@
                         <form class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label text-muted small fw-bold">NOME COMPLETO</label>
-                                <input type="text" class="form-control border-0 bg-light rounded-3" value="Luiz Claudio">
+                                <input type="text" class="form-control border-0 bg-light rounded-3" value="${usuario.nome}">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label text-muted small fw-bold">E-MAIL</label>
-                                <input type="email" class="form-control border-0 bg-light rounded-3" value="luiz@exemplo.com.br" readonly>
+                                <input type="email" class="form-control border-0 bg-light rounded-3" value="${usuario.email}" readonly>
                             </div>
                             <div class="col-12 mt-4">
                                 <button type="button" class="btn btn-dark rounded-pill px-4" style="background-color: var(--hero-bg);">Salvar Alterações</button>

@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- Importação da biblioteca JSTL para lógica dinâmica --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -11,10 +13,12 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <%-- Splash Screen de entrada --%>
     <div class="intro-overlay">
         <h1 class="intro-logo">Agnello</h1>
     </div>
 
+    <%-- Cabeçalho Global (inclui lógica de Login/Perfil) --%>
     <jsp:include page="header.jsp" />
 
     <section class="hero-section">
@@ -31,51 +35,43 @@
     <section id="vitrine" class="products-container">
         <h2 class="section-title brand-font">Melhor Seleção</h2>
         <p class="section-subtitle">EXPLORE NOSSA ADEGA</p>
+
         <div class="product-grid">
-            <div class="product-card">
-                <span class="tag branco">BRANCO</span>
-                <a href="detalhe-vinho?id=sip-happens">
-                    <div class="product-image-container">
-                        <img src="img/Gemini_Generated_Image_qdhdkwqdhdkwqdhd (1).png" class="product-image" alt="Dona Isabella Chadonnay">
-                    </div>
-                </a>
-                <a href="detalhe-vinho?id=sip-happens" class="text-decoration-none text-dark">
-                    <h3 class="product-title brand-font">Dona Isabella Chadonnay</h3>
-                </a>
-                <p class="product-price">R$ 142,00</p>
-                <button class="btn-buy-now" onclick="adicionarAoCarrinho('Dona Isabella Chadonnay', 142)">Comprar agora</button>
-            </div>
+            <%-- Laço dinâmico: Percorre a lista 'vinhos' enviada pelo HomeServlet --%>
+            <c:forEach var="v" items="${vinhos}">
+                <div class="product-card">
+                    <%-- Tag dinâmica (Tinto, Branco, Rose) vinda da Azure --%>
+                    <span class="tag ${v.classeTag}">${v.tag}</span>
 
-            <div class="product-card">
-                <span class="tag tinto">TINTO</span>
-                <a href="detalhe-vinho?id=valle-andino">
-                    <div class="product-image-container">
-                        <img src="img/Gemini_Generated_Image_qxx5exqxx5exqxx5 (1).png" class="product-image" alt="Valle Andino Reserva">
-                    </div>
-                </a>
-                <a href="detalhe-vinho?id=valle-andino" class="text-decoration-none text-dark">
-                    <h3 class="product-title brand-font">Valle Andino Reserva</h3>
-                </a>
-                <p class="product-price">R$ 185,00</p>
-                <button class="btn-buy-now" onclick="adicionarAoCarrinho('Valle Andino Reserva', 185)">Comprar agora</button>
-            </div>
+                    <a href="detalhe-vinho?id=${v.id}">
+                        <div class="product-image-container">
+                            <img src="${v.imagemUrl}" class="product-image" alt="${v.nome}">
+                        </div>
+                    </a>
 
-            <div class="product-card">
-                <span class="tag rose">ROSÉ</span>
-                <a href="detalhe-vinho?id=sapphire-sunset">
-                    <div class="product-image-container">
-                        <img src="img/Gemini_Generated_Image_42b1mg42b1mg42b1 (1).png" class="product-image" alt="Encanto Provençal">
-                    </div>
-                </a>
-                <a href="detalhe-vinho?id=sapphire-sunset" class="text-decoration-none text-dark">
-                    <h3 class="product-title brand-font">Encanto Provençal</h3>
-                </a>
-                <p class="product-price">R$ 160,00</p>
-                <button class="btn-buy-now" onclick="adicionarAoCarrinho('Encanto Provençal', 160)">Comprar agora</button>
-            </div>
+                    <a href="detalhe-vinho?id=${v.id}" class="text-decoration-none text-dark">
+                        <h3 class="product-title brand-font">${v.nome}</h3>
+                    </a>
+
+                    <%-- Preço sincronizado diretamente do Banco de Dados --%>
+                    <p class="product-price">R$ ${v.preco}</p>
+
+                    <button class="btn-buy-now" onclick="adicionarAoCarrinho('${v.nome}', ${v.preco})">
+                        Comprar agora
+                    </button>
+                </div>
+            </c:forEach>
+
+            <%-- Mensagem amigável caso a lista esteja vazia --%>
+            <c:if test="${empty vinhos}">
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted">Nenhum vinho encontrado na nossa adega no momento.</p>
+                </div>
+            </c:if>
         </div>
     </section>
 
+    <%-- Offcanvas do Carrinho --%>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
         <div class="offcanvas-header text-white" style="background-color: var(--hero-bg);">
             <h5 class="offcanvas-title brand-font">Meu Carrinho</h5>
@@ -92,6 +88,7 @@
         </div>
     </div>
 
+    <%-- Scripts e Rodapé --%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="js/script.js"></script>

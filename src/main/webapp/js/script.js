@@ -19,25 +19,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // 2. Gráfico de Radar na Página de Produto (agora via Servlet)
+    // 2. Gráfico de Radar na Página de Produto (100% Dinâmico)
     if (window.location.pathname.includes('detalhe-vinho')) {
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
-
-        const radarData = {
-            "sip-happens": [4, 2, 5, 8, 3],
-            "valle-andino": [8, 7, 6, 4, 1],
-            "sapphire-sunset": [3, 1, 5, 6, 4]
-        };
-
         const ctx = document.getElementById('flavorRadarChart');
-        if (ctx && typeof Chart !== 'undefined' && radarData[id]) {
+
+        if (ctx && typeof Chart !== 'undefined') {
+            // Puxa os dados que foram injetados dinamicamente no HTML pelo JSP/Java
+            const corpo = ctx.getAttribute('data-corpo');
+            const taninos = ctx.getAttribute('data-taninos');
+            const alcool = ctx.getAttribute('data-alcool');
+            const acidez = ctx.getAttribute('data-acidez');
+            const docura = ctx.getAttribute('data-docura');
+
             new Chart(ctx, {
                 type: 'radar',
                 data: {
                     labels: ['Corpo', 'Taninos', 'Álcool', 'Acidez', 'Doçura'],
                     datasets: [{
-                        data: radarData[id],
+                        // Array preenchido com os dados vindos do banco
+                        data: [corpo, taninos, alcool, acidez, docura],
                         backgroundColor: 'rgba(201, 185, 147, 0.2)',
                         borderColor: '#c9b993',
                         pointBackgroundColor: '#2b0b10',

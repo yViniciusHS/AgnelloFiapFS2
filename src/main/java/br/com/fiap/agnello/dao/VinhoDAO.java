@@ -29,6 +29,11 @@ public class VinhoDAO {
                 vinho.setImagemUrl(rs.getString("imagem_url"));
                 vinho.setDescricao(rs.getString("descricao"));
                 vinho.setProducao(rs.getString("producao"));
+                vinho.setCorpo(rs.getInt("corpo"));
+                vinho.setTaninos(rs.getInt("taninos"));
+                vinho.setAlcool(rs.getInt("alcool"));
+                vinho.setAcidez(rs.getInt("acidez"));
+                vinho.setDocura(rs.getInt("docura"));
             }
         } catch (SQLException e) {
             System.err.println("Erro ao buscar no banco: " + e.getMessage());

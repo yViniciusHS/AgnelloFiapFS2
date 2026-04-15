@@ -73,7 +73,13 @@
                 <div class="mb-5 p-4 bg-white rounded-5 border shadow-sm">
                     <h6 class="brand-font text-center mb-4 text-uppercase letter-spacing-2">Notas do Sommelier</h6>
                     <div style="height: 250px; position: relative;">
-                        <canvas id="flavorRadarChart"></canvas>
+                        <canvas id="flavorRadarChart"
+                                data-corpo="${produto.corpo}"
+                                data-taninos="${produto.taninos}"
+                                data-alcool="${produto.alcool}"
+                                data-acidez="${produto.acidez}"
+                                data-docura="${produto.docura}">
+                        </canvas>
                     </div>
                 </div>
 
@@ -81,10 +87,42 @@
                     <button class="btn btn-dark btn-lg rounded-pill py-3 fw-bold shadow-lg" onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco})">
                         <i class="bi bi-bag-plus me-2"></i> ADICIONAR AO CARRINHO
                     </button>
+                    <div class="p-3 border rounded-4 d-flex align-items-center gap-3 bg-white">
+                        <i class="bi bi-truck text-success fs-4"></i>
+                        <span class="small">Frete grátis em pedidos acima de R$ 500 para todo o Brasil.</span>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+        <div class="offcanvas-header text-white" style="background-color: var(--hero-bg, #2b0b10);">
+            <h5 class="offcanvas-title brand-font">Meu Carrinho</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div class="offcanvas-body-items flex-grow-1" id="cartItems">
+                <p class="text-muted text-center py-4">Seu carrinho está vazio.</p>
+            </div>
+            <div class="border-top pt-3">
+                <h5 id="cartTotal" class="brand-font">Total: R$ 0,00</h5>
+                <button class="btn btn-dark w-100 rounded-pill py-3 mt-3 fw-bold">FINALIZAR COMPRA</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-agnello py-5 mt-5">
+        <div class="container text-center">
+            <div class="footer-logo brand-font fs-2 mb-3">Agnello</div>
+            <p class="mb-1">Agnello © 2026 - Vinhos com Propósito</p>
+            <p class="small text-muted">Desenvolvido por <span class="fw-bold text-gold">Codart</span></p>
+            <div class="social-links mt-4">
+                <a href="#" class="mx-2 text-dark"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="mx-2 text-dark"><i class="bi bi-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

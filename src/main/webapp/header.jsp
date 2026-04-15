@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- Importação obrigatória da biblioteca JSTL --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <header class="custom-header">
     <div class="container-fluid px-4 px-lg-5 header-grid">
         <div class="header-left">
-
             <a href="home" class="logo text-decoration-none">Agnello</a>
         </div>
 
         <ul class="nav-links mb-0 d-none d-lg-flex">
-
             <li><a href="home" class="filter-btn" data-filter="tinto">Tintos</a></li>
             <li><a href="home" class="filter-btn" data-filter="branco">Brancos</a></li>
             <li><a href="home" class="filter-btn" data-filter="rose">Rosés</a></li>
@@ -20,13 +21,17 @@
         </ul>
 
         <div class="user-actions d-flex align-items-center gap-3">
-            <% if (session.getAttribute("usuarioLogado") != null) { %>
-                <a href="perfil" class="profile-btn"><i class="bi bi-person-circle"></i></a>
-            <% } else { %>
-                <a href="login.jsp" class="text-white text-decoration-none small text-uppercase letter-spacing-2 fw-bold">Entrar</a>
-                <a href="cadastro.jsp" class="btn btn-outline-light btn-sm rounded-pill px-3"
-                   style="font-size: 0.7rem; border-color: var(--sand-button); color: var(--sand-button);">CADASTRE-SE</a>
-            <% } %>
+            <%-- Validação de Sessão limpa usando JSTL e Expression Language --%>
+            <c:choose>
+                <c:when test="${not empty sessionScope.usuarioLogado}">
+                    <a href="perfil" class="profile-btn"><i class="bi bi-person-circle"></i></a>
+                </c:when>
+                <c:otherwise>
+                    <a href="login.jsp" class="text-white text-decoration-none small text-uppercase letter-spacing-2 fw-bold">Entrar</a>
+                    <a href="cadastro.jsp" class="btn btn-outline-light btn-sm rounded-pill px-3"
+                       style="font-size: 0.7rem; border-color: var(--sand-button); color: var(--sand-button);">CADASTRE-SE</a>
+                </c:otherwise>
+            </c:choose>
 
             <button class="cart-btn border-0" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
                 <i class="bi bi-cart2"></i> <span id="cart-total-header">R$ 0,00</span>

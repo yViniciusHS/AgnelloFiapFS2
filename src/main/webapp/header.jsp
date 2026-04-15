@@ -2,14 +2,16 @@
 <header class="custom-header">
     <div class="container-fluid px-4 px-lg-5 header-grid">
         <div class="header-left">
-            <a href="index.jsp" class="logo text-decoration-none">Agnello</a>
+            <%-- Alterado de index.jsp para home para garantir o carregamento do banco --%>
+            <a href="home" class="logo text-decoration-none">Agnello</a>
         </div>
 
         <ul class="nav-links mb-0 d-none d-lg-flex">
-            <li><a href="index.jsp" class="filter-btn" data-filter="tinto">Tintos</a></li>
-            <li><a href="index.jsp" class="filter-btn" data-filter="branco">Brancos</a></li>
-            <li><a href="index.jsp" class="filter-btn" data-filter="rose">Rosés</a></li>
-            <li><a href="index.jsp" class="filter-btn" data-filter="all">Todos</a></li>
+            <%-- Filtros agora apontam para a rota dinâmica --%>
+            <li><a href="home" class="filter-btn" data-filter="tinto">Tintos</a></li>
+            <li><a href="home" class="filter-btn" data-filter="branco">Brancos</a></li>
+            <li><a href="home" class="filter-btn" data-filter="rose">Rosés</a></li>
+            <li><a href="home" class="filter-btn" data-filter="all">Todos</a></li>
             <li><a href="sommelier.jsp" class="fw-bold" style="color: var(--sand-button);">Sommelier</a></li>
             <li class="expandable-search">
                 <button class="search-toggle" id="searchToggleBtn"><i class="bi bi-search"></i></button>

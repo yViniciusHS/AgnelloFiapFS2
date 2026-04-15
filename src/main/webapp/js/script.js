@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    // 1. Splash Screen (Animação de entrada)
+    // 1. Splash Screen
     const introOverlay = document.querySelector(".intro-overlay");
     if(introOverlay) {
         if (typeof gsap !== 'undefined') {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // 2. Gráfico de Radar na Página de Produto (100% Dinâmico)
+    // 2. Gráfico de Radar na Página de Produto
     if (window.location.pathname.includes('detalhe-vinho')) {
         const ctx = document.getElementById('flavorRadarChart');
 
@@ -102,14 +102,14 @@ document.addEventListener("DOMContentLoaded", function() {
             e.preventDefault();
             const targetId = link.getAttribute('data-target');
 
-            // Remove estado ativo de todos os links e esconde os conteúdos
+
             profileTabs.forEach(l => l.classList.remove('active', 'bg-dark', 'text-white'));
             document.querySelectorAll('.profile-tab-content').forEach(c => c.classList.add('d-none'));
 
-            // Ativa o link clicado e aplica as cores escuras da Agnello
+
             link.classList.add('active', 'bg-dark', 'text-white');
 
-            // Mostra o conteúdo correspondente
+
             const targetContent = document.getElementById(targetId);
             if(targetContent) {
                 targetContent.classList.remove('d-none');
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// --- SISTEMA DE CARRINHO (Global) ---
+// --- SISTEMA DE CARRINHO  ---
 let carrinho = [];
 let total = 0;
 
@@ -162,10 +162,7 @@ function atualizarInterfaceCarrinho() {
     }
 }
 
-/**
- * Função para facilitar o preenchimento de login durante demonstrações acadêmicas.
- * Deve ser chamada por um botão ou evento no login.jsp.
- */
+
 function preencherAdmin() {
     const emailField = document.getElementById('email');
     const senhaField = document.getElementById('senha');

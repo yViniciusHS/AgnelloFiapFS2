@@ -9,7 +9,7 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.invalidate(); // Destrói a sessão
+        session.invalidate();
         response.sendRedirect("index.jsp");
     }
 }

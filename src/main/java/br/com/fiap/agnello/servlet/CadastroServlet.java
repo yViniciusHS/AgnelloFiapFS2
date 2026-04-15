@@ -7,9 +7,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 
-/**
- * Servlet responsável pelo processamento de criação de novas contas.
- */
+
+ //Servlet responsável pelo processamento de criação de novas contas.
+
 @WebServlet("/cadastro")
 public class CadastroServlet extends HttpServlet {
 
@@ -29,7 +29,7 @@ public class CadastroServlet extends HttpServlet {
             return;
         }
 
-        // Instanciação do modelo com dados iniciais de gamificação (Fase 2)
+        // Instanciação do modelo com dados iniciais
         Usuario u = new Usuario();
         u.setNome(nome);
         u.setEmail(email);
@@ -37,7 +37,7 @@ public class CadastroServlet extends HttpServlet {
         u.setEndereco(endereco);
         u.setCep(cep);
 
-        // Atributos padrão para novos membros do Clube Agnello
+        // Atributos padrão para membros do Clube Agnello
         u.setNivel("INICIANTE");
         u.setPontosXp(0);
         u.setMembroDesde("Abr 2026");
@@ -46,10 +46,10 @@ public class CadastroServlet extends HttpServlet {
 
         // Tenta persistir no banco de dados da Azure
         if (dao.cadastrar(u)) {
-            // Sucesso: Redireciona para o login com parâmetro de confirmação
+
             response.sendRedirect("login.jsp?sucesso=true");
         } else {
-            // Erro: Geralmente causado por email duplicado (chave primária)
+
             request.setAttribute("erro", "Não foi possível criar a conta. Verifique se o e-mail já está cadastrado.");
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         }

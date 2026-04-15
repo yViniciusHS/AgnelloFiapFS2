@@ -2,12 +2,12 @@
 <header class="custom-header">
     <div class="container-fluid px-4 px-lg-5 header-grid">
         <div class="header-left">
-            <%-- Alterado de index.jsp para home para garantir o carregamento do banco --%>
+
             <a href="home" class="logo text-decoration-none">Agnello</a>
         </div>
 
         <ul class="nav-links mb-0 d-none d-lg-flex">
-            <%-- Filtros agora apontam para a rota dinâmica --%>
+
             <li><a href="home" class="filter-btn" data-filter="tinto">Tintos</a></li>
             <li><a href="home" class="filter-btn" data-filter="branco">Brancos</a></li>
             <li><a href="home" class="filter-btn" data-filter="rose">Rosés</a></li>

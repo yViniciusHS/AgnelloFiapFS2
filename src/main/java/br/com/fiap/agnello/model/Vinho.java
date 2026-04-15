@@ -12,7 +12,7 @@ public class Vinho {
     private String descricao;
     private String producao;
 
-    // Novos atributos para o Gráfico do Sommelier (Fase 2 - Sem Mocks)
+    // Novos atributos para o Gráfico do Sommelier
     private int corpo;
     private int taninos;
     private int alcool;
@@ -21,7 +21,7 @@ public class Vinho {
 
     public Vinho() {}
 
-    // --- Getters e Setters Originais ---
+    // --- Getters e Setters  ---
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
@@ -52,7 +52,6 @@ public class Vinho {
     public String getProducao() { return producao; }
     public void setProducao(String producao) { this.producao = producao; }
 
-    // --- Getters e Setters dos Novos Atributos (Gráfico) ---
     public int getCorpo() { return corpo; }
     public void setCorpo(int corpo) { this.corpo = corpo; }
 

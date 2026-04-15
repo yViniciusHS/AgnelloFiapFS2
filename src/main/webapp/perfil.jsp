@@ -12,7 +12,7 @@
 </head>
 <body class="bg-light">
 
-    <%-- Inclusão do Header Global: Mantém a identidade e a lógica de login --%>
+
     <jsp:include page="header.jsp" />
 
     <div class="container my-5 pt-4">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                <%-- Aba: Clube Agnello (Gamificação) --%>
+                <%-- Aba: Clube Agnello --%>
                 <div id="clube" class="profile-tab-content d-none animate__animated animate__fadeIn">
                     <h2 class="brand-font mb-4">Clube Agnello</h2>
 
@@ -77,7 +77,7 @@
                             </div>
                         </div>
 
-                        <%-- Barra de Progresso Dinâmica baseada no XP da Azure --%>
+                        <%-- Barra de Progresso Dinâmica  --%>
                         <div class="progress bg-dark mb-2" style="height: 10px;">
                             <div class="progress-bar bg-gold" role="progressbar"
                                  style="width: ${(usuario.pontosXp * 100) / 1000}%"
@@ -89,7 +89,7 @@
                         </div>
                     </div>
 
-                    <%-- Missões e Benefícios (Fase 2) --%>
+                    <%-- Missões e Benefícios  --%>
                     <div class="row g-4">
                         <div class="col-md-6">
                             <h5 class="brand-font mb-3">Missões para pontuar</h5>

@@ -33,14 +33,14 @@
         <form action="login" method="post">
             <div class="mb-3">
                 <label class="form-label small fw-bold text-muted">E-MAIL</label>
-                <%-- Login Facilitado: value já preenchido com o usuário da Azure --%>
+
                 <input type="email" name="email" id="email"
                        value="luiz@exemplo.com.br"
                        class="form-control rounded-3 bg-light border-0 py-2" required>
             </div>
             <div class="mb-4">
                 <label class="form-label small fw-bold text-muted">PALAVRA-PASSE</label>
-                <%-- Login Facilitado: senha padrão configurada no banco --%>
+
                 <input type="password" name="senha" id="senha"
                        value="123"
                        class="form-control rounded-3 bg-light border-0 py-2" required>
@@ -50,7 +50,7 @@
                 ENTRAR
             </button>
 
-            <%-- Botão de auxílio acadêmico para preenchimento rápido --%>
+
             <button type="button" onclick="preencherAdmin()" class="btn btn-link w-100 mt-2 text-muted small text-decoration-none" style="font-size: 0.7rem;">
                 <i class="bi bi-magic me-1"></i> Preencher dados de demonstração
             </button>

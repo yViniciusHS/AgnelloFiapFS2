@@ -6,16 +6,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Camada de persistência para os vinhos da Vinheria Agnello.
- * Gerencia a comunicação entre a aplicação Java e o PostgreSQL na Azure.
- */
+
 public class VinhoDAO {
 
-    /**
-     * Busca todos os vinhos cadastrados.
-     * Utilizado pela HomeServlet para preencher a vitrine principal.
-     */
+
+     //Busca todos os vinhos cadastrados.
+
     public List<Vinho> listarTodos() {
         List<Vinho> vinhos = new ArrayList<>();
         String sql = "SELECT * FROM t_agnello_vinho ORDER BY nome ASC";
@@ -33,10 +29,89 @@ public class VinhoDAO {
         return vinhos;
     }
 
-    /**
-     * Busca vinhos por uma categoria específica (tinto, branco, rose).
-     * Essencial para o funcionamento dos filtros do Header.
-     */
+    //Busca vinhos baseada no Perfil Sensorial ou Ocasião Especial.
+
+    public List<Vinho> buscarPorPerfil(String perfil) {
+        List<Vinho> vinhos = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("SELECT * FROM t_agnello_vinho WHERE ");
+
+        // Lógica Avançada: Tradução de conceitos sensoriais e ocasiões para dados técnicos
+        switch (perfil.toLowerCase()) {
+            case "leve":
+                // Vinhos leves: pouco corpo e boa acidez (refrescância)
+                sql.append("corpo <= 4 AND acidez >= 6");
+                break;
+            case "intenso":
+                // Vinhos intensos: muito corpo e taninos presentes
+                sql.append("corpo >= 7 AND taninos >= 7");
+                break;
+            case "fresco":
+                // Vinhos frescos: alta acidez e baixa doçura
+                sql.append("acidez >= 7 AND docura <= 4");
+                break;
+            case "romantico":
+                // Ocasião: Vinhos sofisticados (Reserva) ou que contenham o termo na descrição
+                sql.append("(descricao ILIKE '%romantico%' OR nome ILIKE '%Reserva%')");
+                break;
+            case "piscina":
+                // Ocasião: Brancos e Rosés refrescantes
+                sql.append("classe_tag IN ('branco', 'rose') AND acidez >= 6");
+                break;
+            case "churrasco":
+                // Ocasião: Tintos encorpados que suportam carnes vermelhas
+                sql.append("classe_tag = 'tinto' AND corpo >= 7");
+                break;
+            default:
+                // Se não for um perfil predefinido, realiza a busca textual flexível
+                return buscarParaSommelier(perfil);
+        }
+
+        sql.append(" ORDER BY nome ASC");
+
+        try (Connection conn = ConexaoBD.obterConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql.toString());
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                vinhos.add(preencherVinho(rs));
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar por perfil/ocasião: " + e.getMessage());
+        }
+        return vinhos;
+    }
+
+
+     //Busca vinhos baseada em termos/ocasiões
+
+    public List<Vinho> buscarParaSommelier(String termo) {
+        List<Vinho> vinhos = new ArrayList<>();
+        String sql = "SELECT * FROM t_agnello_vinho " +
+                "WHERE descricao ILIKE ? OR classe_tag ILIKE ? OR nome ILIKE ? " +
+                "ORDER BY nome ASC";
+
+        try (Connection conn = ConexaoBD.obterConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            String query = "%" + termo + "%";
+            stmt.setString(1, query);
+            stmt.setString(2, query);
+            stmt.setString(3, query);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    vinhos.add(preencherVinho(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro na busca textual do sommelier: " + e.getMessage());
+        }
+        return vinhos;
+    }
+
+
+     //Busca vinhos por uma categoria específica (tinto, branco, rose).
+
     public List<Vinho> listarPorCategoria(String categoria) {
         List<Vinho> vinhos = new ArrayList<>();
         String sql = "SELECT * FROM t_agnello_vinho WHERE classe_tag = ? ORDER BY nome ASC";
@@ -56,10 +131,9 @@ public class VinhoDAO {
         return vinhos;
     }
 
-    /**
-     * Busca um vinho detalhado por seu ID único.
-     * Utilizado pela VinhoServlet para carregar a página produto.jsp.
-     */
+
+     // Busca um vinho detalhado por ID único.
+
     public Vinho buscarPorId(String id) {
         String sql = "SELECT * FROM t_agnello_vinho WHERE id_vinho = ?";
         Vinho vinho = null;
@@ -79,13 +153,11 @@ public class VinhoDAO {
         return vinho;
     }
 
-    /**
-     * Método auxiliar para centralizar o mapeamento do ResultSet para o Objeto.
-     * Garante que o preço real (ex: 142.99) seja lido corretamente da Azure.
-     */
+    //Mapeamento centralizado do ResultSet para o Objeto Vinho.
+
     private Vinho preencherVinho(ResultSet rs) throws SQLException {
         Vinho v = new Vinho();
-        v.setId(rs.getString("id_vinho")); // Remova o underline extra que causou o erro 500 // O nome correto no seu banco é sem o underline extra; // Verifique se o nome da coluna no banco é exatamente este
+        v.setId(rs.getString("id_vinho"));
         v.setNome(rs.getString("nome"));
         v.setPreco(rs.getDouble("preco"));
         v.setTag(rs.getString("tag"));
@@ -96,7 +168,7 @@ public class VinhoDAO {
         v.setDescricao(rs.getString("descricao"));
         v.setProducao(rs.getString("producao"));
 
-        // Atributos para o Gráfico de Radar (Sommelier Digital)
+        // Atributos técnicos para recomendação e Gráfico de Radar
         v.setCorpo(rs.getInt("corpo"));
         v.setTaninos(rs.getInt("taninos"));
         v.setAlcool(rs.getInt("alcool"));

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- Importação da biblioteca JSTL para lógica dinâmica --%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <%-- Splash Screen de entrada --%>
+
     <div class="intro-overlay">
         <h1 class="intro-logo">Agnello</h1>
     </div>
 
-    <%-- Cabeçalho Global (inclui lógica de Login/Perfil) --%>
+
     <jsp:include page="header.jsp" />
 
     <section class="hero-section">
@@ -62,7 +62,7 @@
                 </div>
             </c:forEach>
 
-            <%-- Mensagem amigável caso a lista esteja vazia --%>
+            <%-- Mensagem caso lista esteja vazia --%>
             <c:if test="${empty vinhos}">
                 <div class="col-12 text-center py-5">
                     <p class="text-muted">Nenhum vinho encontrado na nossa adega no momento.</p>

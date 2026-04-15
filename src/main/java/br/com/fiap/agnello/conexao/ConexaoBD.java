@@ -6,16 +6,21 @@ import java.sql.SQLException;
 
 public class ConexaoBD {
 
-    // O Host encontra-se na página "Descrição geral" do servidor na Azure
-    // O parâmetro sslmode=require é obrigatório na Azure
-    private static final String URL = "jdbc:postgresql://agn.postgres.database.azure.com:5432/postgres?sslmode=require";
-    private static final String USUARIO = "adminagnello";
-    private static final String SENHA = "codartfiaP24";
+    // 1. Defina como constantes da classe (static final)
+    private static final String URL = System.getenv("DB_URL");
+    private static final String USER = System.getenv("DB_USER");
+    private static final String PASSWORD = System.getenv("DB_PASSWORD");
 
     public static Connection obterConexao() {
         try {
+            if (URL == null || USER == null || PASSWORD == null) {
+                throw new RuntimeException("Variáveis de ambiente (DB_URL, DB_USER, DB_PASSWORD) não configuradas!");
+            }
+
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection(URL, USUARIO, SENHA);
+
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+
         } catch (ClassNotFoundException e) {
             System.err.println("Driver não encontrado: " + e.getMessage());
             throw new RuntimeException(e);
